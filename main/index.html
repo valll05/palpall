@@ -557,38 +557,48 @@
                 }
                 
                 .music-player {
+                    position: fixed;
                     top: 10px;
                     right: 10px;
-                    left: 10px;
-                    padding: 12px 18px;
-                    gap: 12px;
-                    border-radius: 20px;
-                    max-width: calc(100vw - 20px);
-                    flex-wrap: wrap;
-                    justify-content: center;
+                    left: auto; /* Reset left positioning */
+                    width: auto;
+                    max-width: 200px; /* Batasi lebar maksimal */
+                    padding: 8px 12px;
+                    gap: 8px;
+                    border-radius: 15px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-start;
+                    flex-wrap: nowrap;
                 }
                 
                 .music-toggle {
-                    width: 40px;
-                    height: 40px;
-                    font-size: 1em;
+                    width: 32px;
+                    height: 32px;
+                    font-size: 0.85em;
                     flex-shrink: 0;
                 }
                 
                 .music-info {
-                    font-size: 0.85em;
-                    text-align: center;
+                    font-size: 0.75em;
+                    text-align: left;
                     flex: 1;
-                    min-width: 120px;
+                    min-width: 80px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
                 
                 .volume-control {
-                    gap: 6px;
+                    gap: 4px;
+                    flex-shrink: 0;
                 }
                 
                 .volume-slider {
-                    width: 50px;
+                    width: 40px;
                 }
+            
                 
                 .welcome-content {
                     padding: 20px;
@@ -706,30 +716,31 @@
             /* RESPONSIVE - Mobile Medium (480px and below) */
             @media (max-width: 480px) {
                 .music-player {
-                    top: 5px;
-                    right: 5px;
-                    left: 5px;
-                    padding: 10px 15px;
-                    gap: 10px;
-                    max-width: calc(100vw - 10px);
-                    flex-direction: column;
-                    align-items: center;
+                    top: 8px;
+                    right: 8px;
+                    max-width: 180px;
+                    padding: 6px 10px;
+                    gap: 6px;
+                    border-radius: 12px;
                 }
                 
                 .music-toggle {
-                    width: 35px;
-                    height: 35px;
-                    font-size: 0.9em;
+                    width: 28px;
+                    height: 28px;
+                    font-size: 0.8em;
                 }
                 
                 .music-info {
-                    font-size: 0.8em;
-                    order: 1;
-                    margin-bottom: 5px;
+                    font-size: 0.7em;
+                    min-width: 70px;
                 }
                 
                 .volume-control {
-                    order: 2;
+                    gap: 3px;
+                }
+                
+                .volume-slider {
+                    width: 35px;
                 }
                 
                 .welcome-content {
@@ -838,8 +849,27 @@
             /* RESPONSIVE - Mobile Small (360px and below) */
             @media (max-width: 360px) {
                 .music-player {
-                    padding: 8px 12px;
-                    gap: 8px;
+                    top: 5px;
+                    right: 5px;
+                    max-width: 160px;
+                    padding: 5px 8px;
+                    gap: 5px;
+                    border-radius: 10px;
+                }
+                
+                .music-toggle {
+                    width: 26px;
+                    height: 26px;
+                    font-size: 0.75em;
+                }
+                
+                .music-info {
+                    font-size: 0.65em;
+                    min-width: 60px;
+                }
+                
+                .volume-slider {
+                    width: 30px;
                 }
                 
                 .welcome-title { 
@@ -1137,7 +1167,7 @@
             });
             
             backgroundMusic.addEventListener('canplay', function() {
-                musicStatus.textContent = 'Ready to play';
+                musicStatus.textContent = 'Play';
             });
             
             backgroundMusic.addEventListener('error', function() {
